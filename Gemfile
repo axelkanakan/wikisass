@@ -33,4 +33,5 @@ gem 'redcarpet'
 gem 'stripe'
 gem 'friendly_id'
 gem 'foundation-rails'
+gem 'foundation_rails_helper'
 

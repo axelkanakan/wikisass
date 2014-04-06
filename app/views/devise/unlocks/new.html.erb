@@ -1,0 +1,16 @@
+<div class="row">
+	<div class="large-4 large-centered columns"/>
+<h5><b>Resend unlock instructions</h5></b>
+
+<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  
+  <%= f.email_field :email, autofocus: true %></div>
+
+  <div><%= f.submit "Resend unlock instructions" %></div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+</div>
+</div>
