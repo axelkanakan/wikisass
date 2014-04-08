@@ -18,7 +18,7 @@ group :development do
 	gem "rails-erd"
 	gem 'binding_of_caller'
 	gem 'meta_request'
-	gem 'thin'
+	
 end
 
 group :assets do
@@ -34,4 +34,5 @@ gem 'stripe'
 gem 'friendly_id'
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
+gem 'thin'
 

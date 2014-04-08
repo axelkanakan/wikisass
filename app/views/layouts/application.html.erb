@@ -12,14 +12,45 @@
   </head>
 
   <body>
-    <div class="row">
-      <div class="large-12 columns">
-        <h1><b>WikiSass</b></h1>
-        <hr />
+  
+  <div class="contain-to-grid sticky">
+        <nav class="top-bar" data-topbar data-options="sticky_on: large">
+          <ul class="title-area">
+           <li class="name">
+             <h1><a href="#"><b>Wikisass</b></a></h1>
+           </li>
+          </ul>
+          <section class="top-bar-section">
+            <ul class="right">
+            <% if current_user %>
+            <li><%= link_to "Hello #{current_user.email}", edit_user_registration_path %></li>
 
+             <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+            <li><%= link_to "Sign In", new_user_session_path %></li>
+            <li><%= link_to "Sign Out", new_user_registration_path %></li>
+
+
+            <% end %>
+            </ul>
+          </section>
+        </nav>
+       </div>
+
+       <div class="row">
+        <div class="large-12 columns">
+
+      <div class="row">
+      <div class="large-12 columns">
+     <%= flash[:notice] %>
+     <%= flash[:error] %>
+   </div>
+ </div>
+      
+   
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </div>
 </div>
-  </body>
+</body>
 </html>
