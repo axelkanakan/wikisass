@@ -1,6 +1,8 @@
 <div class="row">
 <div class="large-8 columns">
 	<h1><%= @wiki.title %></h1>
+	<hr />
 	<p><%= @wiki.body %></p>
+	<%= link_to "Edit", edit_wiki_path(@wiki), class: 'small button' %>
 </div>
 </div>
