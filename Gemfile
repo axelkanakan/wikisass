@@ -35,4 +35,4 @@ gem 'friendly_id'
 gem 'foundation-rails'
 gem 'foundation_rails_helper'
 gem 'thin'
-
+gem 'faker'
