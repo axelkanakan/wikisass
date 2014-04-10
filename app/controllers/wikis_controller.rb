@@ -12,13 +12,15 @@ class WikisController < ApplicationController
   end
 
   def create
+    @wiki = Wiki.new(params[:wiki])
     @wiki = current_user.wikis.build(params[:wiki])
+    
     if @wiki.save
       flash[:notice] = "Wiki was saved."
       redirect_to @wiki
     else
       flash[:error] = "There was and error saving the post. Please"
-     render :new
+      render :new
    end
  end
   
