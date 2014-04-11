@@ -1,6 +1,7 @@
 <div class="row">
  <div class="large-8 columns">
   <h1><b>All Wikis</b></h1>
+  <%= link_to "Upgrade account", new_subscription_path %>
   <% @wikis.each do |wiki| %>
     <p><%= link_to wiki.title, wiki %></p>
     <% end %>
