@@ -1,2 +1,27 @@
-<h1>Subcriptions#new</h1>
-<p>Find me in app/views/subcriptions/new.html.erb</p>
+<div class="row">
+ <div class="large-8 large-centered columns">
+   <h1>Sign up for subscription</h1>
+   <p>This is inexpensive</p>
+
+   <%= form_for @subscription do |f| %>
+     <% if @subscription.errors.any? %>
+       <div class="error_messages">
+       	  <h2><%= pluralize(@subscription.errors.count,"error") %> prohibited this subscription from
+       	  	being saved</h2>
+       	    <ul>
+       	    	<%= @subscription.errors.full_messages.each do |msg| %>
+       	    	<li><%= msg %></li>
+       	    	<% end %>
+       	    </ul>
+       </div>
+        <% end %>
+        <%= f.hidden_field %>
+        <div class="large-8 large-centered columns">
+          <%= f.hidden_field %>
+          <%= f.text_field :email %>
+          <%= f.submit "Subscribe" %>
+        </div>
+     <% end %>
+ </div>
+
+</div>
