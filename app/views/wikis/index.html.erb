@@ -1,7 +1,10 @@
 <div class="row">
  <div class="large-8 columns">
   <h1><b>All Wikis</b></h1>
+   
+  <% unless current_user.role == "premium" %>
   <%= link_to "Upgrade account", new_subscription_path %>
+  <% end %>
   <% @wikis.each do |wiki| %>
     <p><%= link_to wiki.title, wiki %></p>
     <% end %>

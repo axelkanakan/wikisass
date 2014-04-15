@@ -1,7 +1,7 @@
 <div class="row">
  <div class="large-8 large-centered columns">
-   <h1>Sign up for subscription</h1>
-   <p>This is inexpensive</p>
+   <h4><b>Sign up for subscription</b></h4>
+   
 
    <%= form_for @subscription do |f| %>
      <% if @subscription.errors.any? %>
@@ -15,13 +15,30 @@
        	    </ul>
        </div>
         <% end %>
-        <%= f.hidden_field %>
+        
         <div class="large-8 large-centered columns">
-          <%= f.hidden_field %>
+          <%= f.hidden_field :plan_id, value: 2 %>
+          <%= f.hidden_field :stripe_card_token %>
+          
           <%= f.text_field :email %>
+
+          <%# if @subscription.stripe_card_token.present?%>
+          
+          <%# else %>
+          <%= label_tag :card_number, "Credit Card Number" %>
+          <%= text_field_tag :card_number, nil, name: nil %>
+
+          <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+          <%= text_field_tag :card_code, nil, name: nil %>
+
+          <%= label_tag :card_month, "Card Expiration" %>
+          <%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month"} %>
+          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year"} %>
+          <%# end %>
+        
           <%= f.submit "Subscribe" %>
         </div>
-     <% end %>
+        <% end %>
  </div>
 
 </div>
