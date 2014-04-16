@@ -28,7 +28,8 @@
             </ul>
             <ul class="right">
             <% if current_user %>
-            <li><%= link_to "Hello #{current_user.email}", edit_user_registration_path %></li>
+            <li class="active"><%= image_tag(current_user.avatar.tiny.url) if current_user.avatar? %>
+            <%= link_to "Hello #{current_user.email}", edit_user_registration_path %></li>
 
              <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
             <% else %>
