@@ -9,4 +9,18 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :wikis
   has_one :subscription
+  
+  before_create :set_member
+
+  ROLES =%w[member premium]
+  def role?(base_role)
+  role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role)
+end
+
+
+private
+
+  def set_member
+  	self.role = 'member'
+  end
 end

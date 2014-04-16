@@ -3,6 +3,8 @@
 	<h1><%= @wiki.title %></h1>
 	<hr />
 	<p><%= markdown @wiki.body %></p>
+	<% if can? :edit, @wiki %>
 	<%= link_to "Edit", edit_wiki_path(@wiki), class: 'small button' %>
+    <% end %>
 </div>
 </div>

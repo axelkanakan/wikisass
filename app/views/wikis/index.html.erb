@@ -1,10 +1,16 @@
 <div class="row">
  <div class="large-8 columns">
   <h1><b>All Wikis</b></h1>
+  <%if current_user %>
+  <% if can? :create, Wiki %>
+  <%= link_to "New Post", new_wiki_path, class: 'small button' %>
+  <% end %>
    
   <% unless current_user.role == "premium" %>
-  <%= link_to "Upgrade account", new_subscription_path %>
+  <%= link_to "Upgrade account", new_subscription_path, class: 'small button' %>
   <% end %>
+  <% end %>
+
   <% @wikis.each do |wiki| %>
     <p><%= link_to wiki.title, wiki %></p>
     <% end %>
