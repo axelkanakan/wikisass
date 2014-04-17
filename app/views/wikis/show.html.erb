@@ -3,13 +3,14 @@
 	<%if @wiki.private?%>
     <small>This is super secret</small>
 	<% end %> 
-	<h1><%= @wiki.title %></h1>
-	<hr />
+	<h1><b><%= @wiki.title %></b></h1>
 	<small>
       <%= image_tag(@wiki.user.avatar.tiny.url) if @wiki.user.avatar? %>
       submitted <%= time_ago_in_words(@wiki.created_at) %> ago by 
       <%= @wiki.user.name %>
     </small> 
+
+    <p><%= image_tag(@wiki.image.url) if @wiki.image? %></p>
 	<p><%= markdown @wiki.body %></p>
 	<% if can? :edit, @wiki %>
 	<%= link_to "Edit", edit_wiki_path(@wiki), class: 'small button' %>

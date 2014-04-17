@@ -12,7 +12,8 @@
   <% end %>
 
   <% @wikis.each do |wiki| %>
-    <p><%= link_to wiki.title, wiki %></p>
+
+    <p><%= image_tag(wiki.image.thumb.url) if wiki.image? %><%= link_to wiki.title, wiki %></p>
     <% end %>
  </div>
 </div>
