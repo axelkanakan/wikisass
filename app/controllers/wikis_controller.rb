@@ -1,12 +1,14 @@
 class WikisController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show]
+  
+  before_filter :authenticate_user!
 
   def index
-  	@wikis = Wiki.all
+    	@wikis = Wiki.visible_to(current_user)
   end
 
   def show
   	@wiki = Wiki.find(params[:id])
+    authorize! :read, @wiki, message: "You need to be premium to view this"
   end
 
   def new
@@ -43,5 +45,4 @@ class WikisController < ApplicationController
       render :edit
     end
   end
-
 end

@@ -10,6 +10,9 @@ Wikisass::Application.routes.draw do
 
   devise_for :users
   
+  authenticated :user do
+  	root to: 'wikis#index'
+  end
   
   root :to => 'welcome#index'  
 

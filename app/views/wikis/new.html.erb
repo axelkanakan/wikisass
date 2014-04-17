@@ -9,9 +9,14 @@
 
   <%= f.text_area :body %>
 
+  <% if current_user.role == 'premium' %>
+  <%= f.check_box :private %>
+  <% end %>
+
   <%= f.submit "Save" %>
 
   <% end %>
+
 
 </div>
 </div>
