@@ -2,7 +2,11 @@ Wikisass::Application.routes.draw do
 
    
 
+
+
   resources :subscriptions, only: [:new, :create]
+
+  
 
   resources :wikis
 
@@ -13,6 +17,9 @@ Wikisass::Application.routes.draw do
   authenticated :user do
   	root to: 'wikis#index'
   end
+
+  resources :users, only: [:show]
+  
   
   root :to => 'welcome#index'  
 
