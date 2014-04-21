@@ -3,7 +3,7 @@ class WikisController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    	@wikis = Wiki.visible_to(current_user)
+    	@wikis = Wiki.paginate(page: params[:page], per_page: 10).visible_to(current_user)
   end
 
   def show
@@ -44,5 +44,18 @@ class WikisController < ApplicationController
       flash[:error] = "There was an error saving the post. Please try again."
       render :edit
     end
+  end
+
+  def destroy
+    @wiki = Wiki.find(params[:id])
+    name = @wiki.title
+    authorize! :destroy, @wiki, message: "You need to own the topic to delete it."
+    if @wiki.destroy
+      flash[:notice] = "\"#{name}\" was deleted successfully."
+      redirect_to wikis_path
+    else
+      flash[:error] = "There was an error deleting the topic."
+      render :show
+    end    
   end
 end

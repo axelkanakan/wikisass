@@ -83,6 +83,7 @@ GEM
     foundation-rails (5.2.1.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
+    foundation-will_paginate (0.0.1)
     foundation_rails_helper (0.4)
       actionpack (>= 3.0)
       railties (>= 3.0)
@@ -199,6 +200,7 @@ GEM
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
+    will_paginate (3.0.5)
 
 PLATFORMS
   ruby
@@ -214,6 +216,7 @@ DEPENDENCIES
   figaro
   fog
   foundation-rails
+  foundation-will_paginate
   foundation_rails_helper
   friendly_id
   jquery-rails
@@ -231,3 +234,4 @@ DEPENDENCIES
   stripe
   thin
   uglifier (>= 1.0.3)
+  will_paginate (~> 3.0)

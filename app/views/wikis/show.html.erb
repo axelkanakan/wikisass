@@ -15,5 +15,8 @@
 	<% if can? :edit, @wiki %>
 	<%= link_to "Edit", edit_wiki_path(@wiki), class: 'small button' %>
     <% end %>
+    <%if can? :delete, @wiki %>
+    <%= link_to "Delete", @wiki, method: :delete, class: 'small alert button', confirm: 'Are you sure you want to delete wiki' %>
+    <% end %>
 </div>
 </div>

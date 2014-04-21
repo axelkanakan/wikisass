@@ -15,5 +15,9 @@
 
     <p><%= image_tag(wiki.image.thumb.url) if wiki.image? %><%= link_to wiki.title, wiki %></p>
     <% end %>
+
+    
+      <%= foundation_paginate @wikis%>
+  </ul>
  </div>
 </div>

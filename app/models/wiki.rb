@@ -1,7 +1,6 @@
 class Wiki < ActiveRecord::Base
   attr_accessible :body, :title, :private, :image
   belongs_to :user
-  
   default_scope order('created_at DESC')
 
   validates :title, length: { minimum: 5 }, presence: true
