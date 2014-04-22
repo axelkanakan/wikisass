@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :wikis, dependent: :destroy
   has_one :subscription
+  has_many :shared_wikis, through: :collaborations, source: :wiki
   
   before_create :set_member
   mount_uploader :avatar, AvatarUploader
@@ -18,6 +19,9 @@ class User < ActiveRecord::Base
   role.nil? ? false : ROLES.index(base_role.to_s) <= ROLES.index(role)
 end
 
+def self.all_but(user)
+  where('id != ?', user.id)
+end
 
 private
 

@@ -28,7 +28,7 @@ end
 
 u = User.first
 u.skip_reconfirmation!
-u.update_attributes(email: 'youremail.com', password: 'helloworld', password_confirmation: 'helloworld')
+u.update_attributes(name: 'bob',email: 'youremail.com', password: 'helloworld', password_confirmation: 'helloworld')
 
 puts "Seeds finished"
 puts "#{Wiki.count} wikis created"

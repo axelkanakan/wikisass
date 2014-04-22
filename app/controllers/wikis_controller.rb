@@ -8,6 +8,7 @@ class WikisController < ApplicationController
 
   def show
   	@wiki = Wiki.find(params[:id])
+    @users = User.all_but(current_user)
     authorize! :read, @wiki, message: "You need to be premium to view this"
   end
 

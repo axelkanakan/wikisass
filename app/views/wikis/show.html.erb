@@ -18,5 +18,34 @@
     <%if can? :delete, @wiki %>
     <%= link_to "Delete", @wiki, method: :delete, class: 'small alert button', confirm: 'Are you sure you want to delete wiki' %>
     <% end %>
+    <%if can? :update, @wiki %>
+    <%= form_for @wiki do %>
+    <table>
+      <tbody>
+      <tr>
+         <th>Name</th>
+         <th>Email</th>
+         <th>Give Access</th>
+      </tr>
+     </tbody>
+     <tbody>
+     
+     <% @users.each do |u| %>
+      <tr>
+      <td><%= u.name %></td>
+      <td><%= u.email %></td>
+      <td><%=check_box_tag :user_ids, u.id, @wiki.users.include?(u), name: 'wiki[user_ids][]' %></td>
+         </tr>
+
+     <% end %>
+     
+     </tbody>
+
+    </table>
+
+   <%= submit_tag "Save",  class: 'small button' %>
+    <% end %>
+    <% end %>
+
 </div>
 </div>
