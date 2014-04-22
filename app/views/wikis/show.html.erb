@@ -18,7 +18,8 @@
     <%if can? :delete, @wiki %>
     <%= link_to "Delete", @wiki, method: :delete, class: 'small alert button', confirm: 'Are you sure you want to delete wiki' %>
     <% end %>
-    <%if can? :update, @wiki %>
+    <% if current_user.role == 'premium' %>
+    <% if can? :update, @wiki %>
     <%= form_for @wiki do %>
     <table>
       <tbody>
@@ -42,10 +43,11 @@
      </tbody>
 
     </table>
-
+    <% end %>
    <%= submit_tag "Save",  class: 'small button' %>
     <% end %>
     <% end %>
+
 
 </div>
 </div>

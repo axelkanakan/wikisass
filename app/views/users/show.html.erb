@@ -1,1 +1,21 @@
-<h1><%= @user.name %></h1>
+<div class="row">
+ <div class="large-6 columns">
+  <% if current_user.avatar? %>
+   <a href="#" class="th" id ="imh">
+    <%= image_tag current_user.avatar.large.url %>
+    <% end %>
+   </a>
+   <h2><b><%= @user.name || @user.email %></b></h2>
+
+
+  <% current_user.wikis.each do |wiki|%>
+  <h4><b><%= image_tag(wiki.image.thumb.url) if wiki.image? %><%= link_to wiki.title, wiki %></b></h4>
+  
+  	<small>
+      submitted <%= time_ago_in_words(wiki.created_at) %> 
+    </small>
+      <% end %>
+
+</div>
+ </div>
+</div>
