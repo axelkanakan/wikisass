@@ -20,11 +20,15 @@
            <li class="name">
              <h1><b><%= link_to "WikiSass", root_path %></b></h1>
            </li>
+           
           </ul>
           <section class="top-bar-section">
             <ul class="left">
+            <li class="divider"></li>
              <li><%= link_to "About", about_path %></li>
+             <li class="divider"></li>
              <li><%=  link_to "Wikis", wikis_path %></li>
+             <li class="divider"></li>
             </ul>
             <ul class="right">
             <% if current_user %>
@@ -33,10 +37,12 @@
             </li>
             <li class="active">
             <%= link_to "Hello #{current_user.email}", edit_user_registration_path %></li>
+            <li class="divider"></li>
              <li><%= link_to current_user do%>
              <i class = "fi-torso"></i>
              <% end %>
              </li>
+             <li class="divider"></li>
              <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
             <% else %>
             <li><%= link_to "Sign In", new_user_session_path, class: 'button'%></li>
