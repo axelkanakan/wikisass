@@ -36,7 +36,7 @@
       <td><%= u.name %></td>
       <td><%= u.email %></td>
       <td><%=check_box_tag :user_ids, u.id, @wiki.users.include?(u), name: 'wiki[user_ids][]' %></td>
-         </tr>
+      </tr>
 
      <% end %>
      
