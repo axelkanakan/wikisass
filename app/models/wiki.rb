@@ -20,6 +20,8 @@ class Wiki < ActiveRecord::Base
    	  end
 
    end 
+
+
   
 
 end

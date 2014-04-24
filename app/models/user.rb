@@ -9,7 +9,9 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :wikis, dependent: :destroy
   has_one :subscription
+  has_many :collaborations
   has_many :shared_wikis, through: :collaborations, source: :wiki
+
   
   before_create :set_member
   mount_uploader :avatar, AvatarUploader
@@ -21,6 +23,10 @@ end
 
 def self.all_but(user)
   where('id != ?', user.id)
+end
+
+def wikis_editable_by_user
+  self.wikis + self.shared_wikis
 end
 
 private

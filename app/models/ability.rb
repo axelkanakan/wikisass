@@ -13,8 +13,12 @@ class Ability
     if user.role? :premium
        can :manage, Wiki, :user_id => user.id
        can :read, Wiki
-       can :destroy, Wiki, :user_id => user.id
+       can :edit, Wiki do |wiki| 
+          user.wikis_editable_by_user.include?(wiki)
+        end
     end
+   
+
    
    end
 
