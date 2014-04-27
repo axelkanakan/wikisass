@@ -7,7 +7,7 @@
   <% end %>
    
   <% unless current_user.role == "premium" %>
-  <%= link_to "Upgrade account", new_subscription_path, class: 'small button' %>
+  <%= link_to "Upgrade account", new_subscription_path, class: 'success button' %>
   <% end %>
   <% end %>
 

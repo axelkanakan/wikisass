@@ -1,7 +1,8 @@
 <div class="row">
 <div class="large-8 columns">
 	<%if @wiki.private?%>
-    <small>This is super secret</small>
+    
+    <h4><i class = "fi-lock"></i></h4>
 	<% end %> 
 	<h1><b><%= @wiki.title %></b></h1>
 	<small>
@@ -10,7 +11,7 @@
       <%= @wiki.user.name %>
     </small> 
 
-    <p><%= image_tag(@wiki.image.url) if @wiki.image? %></p>
+  <p><%= image_tag(@wiki.image.url) if @wiki.image? %></p>
 	<p><%= markdown @wiki.body %></p>
 	<% if can? :edit, @wiki %>
 	<%= link_to "Edit", edit_wiki_path(@wiki), class: 'small button' %>
@@ -19,7 +20,7 @@
     <%= link_to "Delete", @wiki, method: :delete, class: 'small alert button', confirm: 'Are you sure you want to delete wiki' %>
     <% end %>
     <% if current_user.role == 'premium' %>
-    <% if can? :update, @wiki %>
+    <% if can? :manage, @wiki %>
     <%= form_for @wiki do %>
     <table>
       <tbody>
